@@ -1,6 +1,7 @@
 package db
 
 type Profile struct {
+	Id         int64  `db:"id"`
 	Sex        bool   `db:"sex"`
 	BirthYear  int    `db:"birth_year"`
 	FirstName  string `db:"first_name"`
