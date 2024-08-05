@@ -9,4 +9,4 @@ Inspired by [github.com/Kagami/go-face](https://github.com/Kagami/go-face).
 
 ## License
 
-face is licensed under [MIT](LICENSE).
+face is licensed under [MIT](LICENSE)
