@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "profileService/docs"
 	"profileService/internal/handlers"
 )
 

@@ -53,6 +53,12 @@ func (db *DataBase) GetProfiles() ([]model.Profile, error) {
 }
 
 func (db *DataBase) GetProfile(id int) (model.Profile, error) {
+	profile := model.Profile{}
+	rows, err := db.Db.Query(context.Background(), "SELECT * FROM profiles where id=$1", id)
+	if err != nil {
+		return profile, err
+	}
+	rows.Scan(&profile.Id, &profile.Sex, &profile.BirthYear, &profile.FirstName, &profile.SecondName, &profile.LastName, &profile.VideoID)
 	return model.Profile{}, nil
 }
 
@@ -60,6 +66,10 @@ func (db *DataBase) InsertProfile() {
 
 }
 
-func (db *DataBase) DeleteProfile(id int) {
-
+func (db *DataBase) DeleteProfile(id int) (bool, error) {
+	_, err := db.Db.Query(context.Background(), "DELETE * FROM profiles where id=$1", id)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
 }

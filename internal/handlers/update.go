@@ -8,17 +8,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SwitchState godoc
+// @BasePath /api/v1
+
+// Update profile godoc
 //
-//	@Summary		Switch state of a video
-//	@Description	Switch by video ID. This route is used for pausing and unpausing videos from proceeding, paused goroutines wont be deleted
+//	@Summary		Update profile
+//	@Description	Update profile info
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	query		int	true	"id"
-//	@Success		200	{object}	int
-//	@Failure		400	{object}	int
-//	@Router			/switch_state [post]
-func UpdateProfile(c *gin.Context) {
+//	@Success		200	{object}	string
+//	@Failure		400	{object}	string
+//	@Router			/update_profile [put]
+func (controller *Controller) UpdateProfile(c *gin.Context) {
 	id, err := strconv.Atoi(c.Request.URL.Query().Get("id"))
 	if err != nil {
 		c.String(http.StatusBadRequest, "Unable to process id")

@@ -4,15 +4,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SwitchState godoc
+// @BasePath /api/v1
+
+// Create profile godoc
 //
-//	@Summary		Switch state of a video
-//	@Description	Switch by video ID. This route is used for pausing and unpausing videos from proceeding, paused goroutines wont be deleted
+//	@Summary		Create profile
+//	@Description	Create profile
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	query		int	true	"id"
-//	@Success		200	{object}	int
-//	@Failure		400	{object}	int
-//	@Router			/switch_state [post]
-func CreateProfile(c *gin.Context) {
+//	@Success		200	{object}	string
+//	@Failure		400	{object}	string
+//	@Router			/create_profile [post]
+func (controller *Controller) CreateProfile(c *gin.Context) {
 }

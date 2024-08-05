@@ -37,7 +37,7 @@ func (controller *Controller) Run() {
 	{
 		create := v1.Group("/create_profile")
 		{
-			create.POST("", CreateProfile)
+			create.POST("", controller.CreateProfile)
 		}
 		read := v1.Group("/get_profiles")
 		{
@@ -45,11 +45,11 @@ func (controller *Controller) Run() {
 		}
 		update := v1.Group("/update_profile")
 		{
-			update.GET("", UpdateProfile)
+			update.GET("", controller.UpdateProfile)
 		}
 		delete := v1.Group("/delete_profile")
 		{
-			delete.GET("", DeleteProfile)
+			delete.GET("", controller.DeleteProfile)
 		}
 	}
 
