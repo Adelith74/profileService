@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"os"
 	handlers "profileService/internal/handlers"
 
 	"github.com/gin-gonic/gin"
@@ -24,6 +26,8 @@ import (
 // @host		localhost:8080
 // @BasePath	/api/v1
 func main() {
+
+	fmt.Println(os.Getenv("LOL"))
 	router := gin.Default()
 
 	v1 := router.Group("/api/v1")
