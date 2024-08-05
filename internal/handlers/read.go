@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -18,11 +17,25 @@ import (
 //	@Success		200	{object}	int
 //	@Failure		400	{object}	int
 //	@Router			/switch_state [post]
-func GetProfile(c *gin.Context) {
+func (controller *Controller) GetProfile(c *gin.Context) {
 	id, err := strconv.Atoi(c.Request.URL.Query().Get("id"))
 	if err != nil {
-		c.String(http.StatusBadRequest, "Unable to process id")
+		c.String(http.StatusBadRequest, "Unable to process id "+err.Error())
 		return
 	}
-	fmt.Println(id)
+	profile, err := controller.db.GetProfile(id)
+	if err != nil {
+		c.String(http.StatusBadRequest, "")
+		return
+	}
+	c.JSON(200, profile)
+}
+
+func (controller *Controller) GetProfiles(c *gin.Context) {
+	profiles, err := controller.db.GetProfiles()
+	if err != nil {
+		c.String(http.StatusBadRequest, "Unable to fetch profiles: "+err.Error())
+		return
+	}
+	c.JSON(200, profiles)
 }

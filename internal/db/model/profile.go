@@ -1,4 +1,4 @@
-package db
+package model
 
 type Profile struct {
 	Id         int64  `db:"id"`
